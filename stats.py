@@ -6,6 +6,8 @@ df = pd.read_csv('carinfo.csv')
 df['Pris'] = df['Pris'].str.replace('\\s+', '', regex=True)
 df['Kilometer'] = df['Kilometer'].str.replace('\\s+', '', regex=True)
 
+df['Pris'] = pd.to_numeric(df['Pris'], errors='coerce')
+
 cleaned_price = []
 for value in df['Pris']:
     try:
@@ -16,22 +18,42 @@ for value in df['Pris']:
 df['Pris'] = cleaned_price
 
 year = int(input('Årsmodell: '))
-price_range = (0, 90000)
-mileage_range = (0, 200000)
 
-year_data = df[df['Årsmodell'] == year]
-year_data['Kilometer'] = pd.to_numeric(year_data['Kilometer'], errors='coerce')
+x1 = int(input('Nedre prisgrense: '))
+y1 = int(input('Øvre prisgrense: '))
+
+x2 = int(input('Nedre kilometergrense: '))
+y2 = int(input('Øvre kilometergrense: '))
+
+price_range = (x1, y1)
+mileage_range = (x2, y2)
+
+year_data = df[df['Årsmodell'] == year].copy()
+year_data.loc[:, 'Kilometer'] = pd.to_numeric(year_data['Kilometer'], errors='coerce')
 
 price_filtered_data = year_data[
     (year_data['Pris'] >= price_range[0]) &
     (year_data['Pris'] <= price_range[1])
 ]
 
-mileage_price_filtered_data = [
+mileage_price_filtered_data = price_filtered_data[
     (price_filtered_data['Kilometer'] >= mileage_range[0]) &
     (price_filtered_data['Kilometer'] <= mileage_range[1])
 ]
 
-print(type(mileage_price_filtered_data))
+average_price = mileage_price_filtered_data['Pris'].max()
+median_price = mileage_price_filtered_data['Pris'].median()
+max_price = mileage_price_filtered_data['Pris'].max()
+min_price = mileage_price_filtered_data['Pris'].min()
+
+output = f'''
+Info om årsmodell {year}, i pris-intervallet {x1} kr til {y1} kr og kilometerstand mellom {x2} km og {y2} km.
+Gjennomsnittlig pris er {average_price:.0f} kr.
+Medianpris er {median_price:.0f} kr.
+Høyeste pris er {max_price:.0f} kr.
+Laveste pris er {min_price:.0f} kr.
+'''
+
+print(output)
 
 
