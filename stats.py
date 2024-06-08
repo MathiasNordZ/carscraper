@@ -41,7 +41,7 @@ mileage_price_filtered_data = price_filtered_data[
     (price_filtered_data['Kilometer'] <= mileage_range[1])
 ]
 
-average_price = mileage_price_filtered_data['Pris'].max()
+average_price = mileage_price_filtered_data['Pris'].mean()
 median_price = mileage_price_filtered_data['Pris'].median()
 max_price = mileage_price_filtered_data['Pris'].max()
 min_price = mileage_price_filtered_data['Pris'].min()
