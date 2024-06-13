@@ -17,14 +17,14 @@ for value in df['Pris']:
 
 df['Pris'] = cleaned_price
 
-x1 = int(input('Nedre prisgrense: '))
-y1 = int(input('Øvre prisgrense: '))
+x1 = 0
+y1 = 550000
 
-x2 = int(input('Nedre kilometergrense: '))
-y2 = int(input('Øvre kilometergrense: '))
+x2 = 0
+y2 = 150000
 
-x3 = int(input('Årsmodell fra: '))
-y3 = int(input('Årsmodell til: '))
+x3 = 2010
+y3 = 2020
 
 price_range = (x1, y1)
 mileage_range = (x2, y2)
@@ -46,15 +46,5 @@ average_price = mileage_price_filtered_data['Pris'].mean()
 median_price = mileage_price_filtered_data['Pris'].median()
 max_price = mileage_price_filtered_data['Pris'].max()
 min_price = mileage_price_filtered_data['Pris'].min()
-
-output = f'''
-Info om årsmodell fra {x3} til {y3}, i pris-intervallet {x1} kr til {y1} kr og kilometerstand mellom {x2} km og {y2} km.
-Gjennomsnittlig pris er {average_price:.0f} kr.
-Medianpris er {median_price:.0f} kr.
-Høyeste pris er {max_price:.0f} kr.
-Laveste pris er {min_price:.0f} kr.
-'''
-
-print(output)
 
 

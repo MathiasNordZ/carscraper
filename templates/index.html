@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info om bilen</title>
+</head>
+<body>
+    <h1>Info om bilen</h1>
+    <form method='post'>
+        <label>Pris fra<input type='text' name='minprice'></label>
+        <input type="submit">
+    </form>
+    <p>Du søker i pris-intervallet {{ var5 }} kr til {{ var6 }} kr med kilometerstand mellom {{ var7 }} km og {{ var8 }} km og årsmodell mellom {{ var9 }} og {{ var10 }}.</p>
+    <!--Gjennomsnittlig pris-->
+    <p>Gjennomsnittlig pris er: {{ var1 }} kr</p>
+    <!--Median pris-->
+    <p>Median pris er: {{ var2 }} kr</p>
+    <!--Høyeste pris-->
+    <p>Høyeste pris er: {{ var3 }} kr</p>
+    <!--Laveste pris-->
+    <p>Laveste pris er: {{ var4 }} kr</p>
+</body>
+</html>
