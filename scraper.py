@@ -3,7 +3,7 @@ import requests
 import time
 import csv
 
-base_url = 'https://www.finn.no/car/used/search.html?model=1.817.2000170&page='
+base_url = 'https://www.finn.no/car/used/search.html?model=1.749.7967&page='
 pages = 6
 
 price = []

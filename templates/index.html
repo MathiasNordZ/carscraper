@@ -7,11 +7,18 @@
 </head>
 <body>
     <h1>Info om bilen</h1>
-    <form method='post'>
-        <label>Pris fra<input type='text' name='minprice'></label>
+    <form method='POST'>
+        Pris fra: <input name='minprice' step="1" pattern="\d+">
+        Pris til: <input name='maxprice' step="1" pattern="\d+">
+
+        Km. stand fra: <input name='minmiles' step="1" pattern="\d+">
+        Km. stand til: <input name='maxmiles' step="1" pattern="\d+">
+
+        Årsmod. fra: <input name='minyears' step="1" pattern="\d+">
+        Årsmod. til: <input name='maxyears' step="1" pattern="\d+">
         <input type="submit">
     </form>
-    <p>Du søker i pris-intervallet {{ var5 }} kr til {{ var6 }} kr med kilometerstand mellom {{ var7 }} km og {{ var8 }} km og årsmodell mellom {{ var9 }} og {{ var10 }}.</p>
+    <p>Du søker i pris-intervallet {{ var1 }} kr til {{ var2 }} kr med kilometerstand mellom {{ var3 }} km og {{ var4 }} km og årsmodell mellom {{ var5 }} og {{ var6 }}.</p>
     <!--Gjennomsnittlig pris-->
     <p>Gjennomsnittlig pris er: {{ var1 }} kr</p>
     <!--Median pris-->

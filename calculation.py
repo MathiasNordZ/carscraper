@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+
 df = pd.read_csv('carinfo.csv')
 
 df['Pris'] = df['Pris'].str.replace('\\s+', '', regex=True)
